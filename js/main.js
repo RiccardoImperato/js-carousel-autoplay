@@ -1,7 +1,6 @@
 'use strict'
 
 /* Funzioni */
-
 function autoPlay() {
 
     domThumbItem[currentThumb].classList.remove('thumb-active');
@@ -19,17 +18,16 @@ function autoPlay() {
     domThumbItem[currentThumb].classList.add('thumb-active');
     domItem[currentslide].classList.add('active');
 }
-
 /*/ Funzioni */
 
 // Programma
 
 // Auto play
 let myFn;
-
 const play = document.querySelector('.start');
 const stop = document.querySelector('.stop');
 
+//Bottoni play e stop
 play.addEventListener("click", function () {
     myFn = setInterval(autoPlay, 3000);
 })
@@ -38,8 +36,6 @@ stop.addEventListener("click", function () {
     clearInterval(myFn);
 })
 
-
-
 // Array con immagini fornite
 const images = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg'];
 
@@ -47,13 +43,9 @@ const images = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg'];
 const items = document.querySelector('.items');
 let currentslide = 0;
 
-// Frecce
-const prev = document.querySelector('.prev');
-const next = document.querySelector('.next');
-
+// Slide
 let item = 0;
 
-// Markup
 for (let i = 0; i < images.length; i++) {
     item = document.createElement('div');
     item.classList.add('item');
@@ -61,7 +53,6 @@ for (let i = 0; i < images.length; i++) {
     if (i === currentslide) {
         item.classList.add('active');
     }
-
     // Immagini
     const img = document.createElement('img');
     img.src = `img/${images[i]}`;
@@ -75,10 +66,7 @@ const domItem = document.querySelectorAll('.item');
 console.log(domItem);
 
 // Thumbnail
-
-// Selezione elemento .list
 const thumb = document.querySelector('.list');
-
 let currentThumb = 0;
 let element = 0;
 
@@ -95,10 +83,7 @@ for (let i = 0; i < images.length; i++) {
 
     if (i === currentThumb) {
         element.classList.add('thumb-active');
-
     }
-
-
     // Immagini
     const img = document.createElement('img');
     img.src = `img/${images[i]}`;
@@ -110,17 +95,15 @@ for (let i = 0; i < images.length; i++) {
 const domThumbItem = document.querySelectorAll('.thumb-item');
 console.log(domThumbItem);
 
+// Click per scorrere le immagini 
 
+// Frecce
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
 
-
-
-
-// aggiugo un evento al click dell'utente selle frecce in modo da poter scorrere le immagini 
 prev.addEventListener("click", function () {
-
     domThumbItem[currentThumb].classList.remove('thumb-active');
     domItem[currentslide].classList.remove('active');
-
     if (currentslide === 0 && currentThumb === 0) {
 
         currentslide = domItem.length - 1;
@@ -130,21 +113,14 @@ prev.addEventListener("click", function () {
         currentThumb--;
         currentslide--;
     }
-
     domThumbItem[currentThumb].classList.add('thumb-active');
     domItem[currentslide].classList.add('active');
-
-
 })
 
 next.addEventListener("click", function () {
-
     domThumbItem[currentThumb].classList.remove('thumb-active');
     domItem[currentslide].classList.remove('active');
-
-
     if (currentslide === domItem.length - 1 && currentThumb === domThumbItem.length - 1) {
-
         currentslide = 0;
         currentThumb = 0;
     }
@@ -152,9 +128,7 @@ next.addEventListener("click", function () {
         currentThumb++;
         currentslide++;
     }
-
-
     domThumbItem[currentThumb].classList.add('thumb-active');
     domItem[currentslide].classList.add('active');
-
 })
+
