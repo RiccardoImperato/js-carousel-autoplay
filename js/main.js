@@ -23,7 +23,8 @@ function autoPlay() {
 // Programma
 
 // Auto play
-let myFn;
+
+let myFn = setInterval(autoPlay, 3000);
 const play = document.querySelector('.start');
 const stop = document.querySelector('.stop');
 
